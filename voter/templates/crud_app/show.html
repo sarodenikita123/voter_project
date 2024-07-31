@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>show page</title>
+{% endblock %}
+{% block content %}
+    <br>
+    <form method="GET" action="{% url 'show_url' %}">
+        <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br>
+
+<body>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>voter_id</th>
+                        <th>first_name</th>
+                        <th>last_name</th>
+                        <th>gender</th>
+                        <th>address</th>
+                        <th>city</th>
+                        <th>state</th>
+                        <th>pincode</th>
+                        <th>Dob</th>
+                        <th>Contact</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in obj%}
+                    <tr>
+
+                        <td>{{obj.voter_id}}</td>
+                        <td>{{obj.first_name}}</td>
+                        <td>{{obj.last_name}}</td>
+                        <td>{{obj.gender}}</td>
+                        <td>{{obj.address}}</td>
+                        <td>{{obj.city}}</td>
+                        <td>{{obj.state}}</td>
+                        <td>{{obj.pincode}}</td>
+                        <td>{{obj.dob}}</td>
+                        <td>{{obj.contact}}</td>
+                        <td>
+                            <a href="{% url 'details_url' obj.id%}">
+                                <button class="btn btn-primary">Details</button>
+                            </a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+</body>
+{% endblock %}

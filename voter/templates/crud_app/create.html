@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>create page</title>
+{% endblock %}
+{% block content %}
+<body>
+        <h3 class="text-center">Registration Voter</h3>
+        <form method="post" class="border border-3 p-4 m-auto mt-3 w-75">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-primary float-center">Register</button>
+        </form>
+</body>
+{% endblock %}

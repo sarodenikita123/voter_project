@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Details Page</title>
+{% endblock %}
+{% block content %}
+
+<body>
+<center>
+    <h1>Voter Details</h1>
+    <p>ID: {{ obj.voter_id }}</p>
+    <p>First Name: {{ obj.first_name }}</p>
+    <p>Last Name: {{ obj.last_name }}</p>
+    <p>Gender: {{ obj.gender }}</p>
+    <p>Address: {{ obj.address }}</p>
+    <p>City: {{ obj.city }}</p>
+    <p>State: {{ obj.state }}</p>
+    <p>Pincode: {{ obj.pincode }}</p>
+    <p>DOB: {{ obj.dob }}</p>
+    <p>Contact: {{ obj.contact }}</p>
+
+    <h4>Edit Voter Information</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'update_url' obj.id %}" class="btn btn-warning">Update</a>
+
+        <h4>Delete voter </h4>
+        <a href="{% url 'cancel_url' obj.id %}" class="btn btn-danger">Delete</a>
+    </form>
+</center>
+</body>
+{% endblock %}
